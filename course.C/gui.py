@@ -4,9 +4,10 @@ import FreeSimpleGUI as FSG
 label = FSG.Text("Type in a todo")
 input_box = FSG.InputText(tooltip="Enter todo", key="todo")
 add_button = FSG.Button("Add")
+edit_button = FSG.Button("Edit",key="todo_edit")
 
 win = FSG.Window("ToDo List",
-                 layout=[[label],[input_box, add_button]],
+                 layout=[[label],[input_box, add_button, edit_button]],
                  font=("Helvetica",20))
 
 while True:
@@ -17,8 +18,16 @@ while True:
             new_todo = values["todo"] + "\n"
             todos.append(new_todo)
             save_todos(todos)
+
+        case "Edit":
+            print("Edit button")
+            todos = get_todos()
+            new_todo = values["todo"] + "\n"
+            todos.append(new_todo)
+            save_todos(todos)
+
         case FSG.WIN_CLOSED:
-            break
+                break
 
 win.close()
 
