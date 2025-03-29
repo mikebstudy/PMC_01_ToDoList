@@ -1,25 +1,8 @@
-TODO_FILE = 'todos.txt'
+from functions import get_todos, save_todos
+import time
 
-def get_todos(filepath=TODO_FILE):
-    """
-    Read a text file and return the list
-    of to-do items.
-    :param filepath: text file where to-do list is stored
-    :return: to-do list
-    """
-    with open(filepath, "r") as file:
-        todos_local = file.readlines()
-        return todos_local
-
-def save_todos(todos_arg, filepath=TODO_FILE):
-    """
-    Save (write) the to-do items list to the text file
-    :param todos_arg: to-do items in list
-    :param filepath:
-    :return:
-    """
-    with open(filepath, "w") as file:
-        file.writelines(todos_arg)
+now = time.strftime("%b %d %Y %H:%M:%S")
+print ("It is", now)
 
 while True:
     user_action = input("Type add, show, edit, done, clear or exit: ")
