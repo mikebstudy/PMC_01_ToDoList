@@ -1,12 +1,13 @@
 # ToDoList project
 - Based on Python Mega Course (by Ardit Sulce)
   - First 20 lessons on building a Todo List app
-  - command line version, desktop GUI version, web version
-
-- course.C is from the lessons
-- mikeb.M is enhanced version based on my own ideas and those of others on the internet
-- ChatGTP.A is experiments in generating code similiar to course.C and mikeb.M
-- (C,M,A - are the letters that proceed git commit comments and correspond to the respective versions)
+  - Includes command line, desktop GUI , and web versions
+ 
+- Three separate implementations 
+  - course.C is from working the lessons
+  - mikeb.M is enhanced implementation based on my own ideas and those of others on the internet
+  - ChatGTP.A is experiments in generating code similiar to course.C and mikeb.M
+  - (C,M,A - are the letters that proceed git commit comments and correspond to the respective implementations)
 
 - Github repo: https://github.com/mikebstudy/PMC.01.ToDoList
   - each version is in its own folder 
