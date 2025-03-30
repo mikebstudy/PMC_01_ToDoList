@@ -14,8 +14,15 @@ st.title("ToDo List")
 st.subheader("Course todo app")
 st.write("Increase your productivity!!!")
 
-for todo in todos:
-    st.checkbox(todo)
+for idx, todo in enumerate(todos):
+    checkbox_setting = st.checkbox(todo, key=todo)
+    if checkbox_setting:
+        todos.pop(idx)
+        save_todos(todos)
+        del st.session_state[todo]
+        st.rerun()
+
 
 st.text_input(label="",placeholder="Add new todo...",
               on_change=add_todo, key='new_todo')
+
