@@ -1,14 +1,12 @@
 import streamlit as st
-from functions import get_todos, save_todos
+import backend as be
 
-todos = get_todos()
+todos = be.get_todos()
 
-def add_todo():
-    todo = st.session_state["new_todo"] + "\n"
-    todos.append(todo)
-    save_todos(todos)
+def add_todo2():
+    new_todo = st.session_state["new_todo"] ## + "\n"
+    be.add_todo(new_todo)
     st.session_state["new_todo"] = ""
-
 
 st.title("ToDo List")
 st.subheader("Course todo app")
@@ -18,11 +16,11 @@ for idx, todo in enumerate(todos):
     checkbox_setting = st.checkbox(todo, key=todo)
     if checkbox_setting:
         todos.pop(idx)
-        save_todos(todos)
+        be.save_todos(todos)
         del st.session_state[todo]
         st.rerun()
 
 
 st.text_input(label="",placeholder="Add new todo...",
-              on_change=add_todo, key='new_todo')
+              on_change=add_todo2, key='new_todo')
 

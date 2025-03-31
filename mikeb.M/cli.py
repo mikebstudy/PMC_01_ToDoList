@@ -1,5 +1,9 @@
-from functions import get_todos, save_todos
+import backend as be
 import time
+
+def show_todos(todos):
+    for index, todo in enumerate(todos):
+        print(f"{index + 1}: {todo.strip("\n")}")
 
 now = time.strftime("%b %d %Y %H:%M:%S")
 print ("It is", now)
@@ -9,31 +13,32 @@ while True:
     user_action = user_action.strip()
 
     if user_action.startswith("add"):
-        todo = user_action[4:].strip()
-        todos = get_todos()
-        # print(todos)
-        todos.append(todo + "\n")
-        # print(todos)
-        save_todos(todos)
+        new_todo = user_action[4:].strip()
+        if new_todo == "":
+            print("Nothing added")
+            continue
+        be.add_todo(new_todo)
 
     elif user_action == "show":
-        todos = get_todos()
-        for index, todo in enumerate(todos):
-            print(f"{index + 1}: {todo.strip("\n")}")
+        todos = be.get_todos()
+        show_todos(todos)
 
     elif user_action.startswith("edit"):
         try:
             number = int(user_action[5:])
             # print(number)
             number -= 1
-            todos = get_todos()
+            todos = be.get_todos()
+            if number < 0 or number >= len(todos):
+                raise IndexError()
             print(f"Replacing: {todos[number]}", end="")
-            new_todo = input("Enter new todo: ")
-            todos[number] = new_todo + "\n"
-            save_todos(todos)
+            edited_todo = input("Enter new todo: ")
+            todos = be.update_todo(number, edited_todo)
+
         except ValueError:
             # print(ValueError.args)
             print("Invalid input")
+
         except IndexError:
             # print(IndexError.args)
             print("Number not in todo list")
@@ -43,21 +48,25 @@ while True:
             number = int(user_action[5:])
             # print(number)
             number -= 1
-            todos = get_todos()
-            del todos[number]
-            save_todos(todos)
+            todos = be.get_todos()
+            if number < 0 or number >= len(todos):
+                raise IndexError()
+            todos = be.drop_todo(number)
+
         except ValueError:
             # print(ValueError.args)
             print("Invalid input")
-        except IndexError:
+
+        except IndexError as error:
             # print(IndexError.args)
+            # print(error)
             print("Number not in todo list")
+
+    elif user_action.startswith("clear"):
+        be.save_todos("")
 
     elif user_action == "exit":
         break
-
-    elif user_action.startswith("clear"):
-        save_todos("")
 
     else:
         print("Invalid command")
