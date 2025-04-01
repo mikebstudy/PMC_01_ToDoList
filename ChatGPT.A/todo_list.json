@@ -1,22 +1,14 @@
 [
     {
-        "task": "aid of their country",
-        "priority": "high"
-    },
-    {
-        "task": "another test",
-        "priority": "high"
-    },
-    {
-        "task": "testing testing",
+        "task": "Task 1",
         "priority": "medium"
     },
     {
-        "task": "now is the time",
-        "priority": "medium"
-    },
-    {
-        "task": "to come to the",
+        "task": "Task 2",
         "priority": "low"
+    },
+    {
+        "task": "Task 3",
+        "priority": "high"
     }
 ]

@@ -54,4 +54,5 @@
   - Added the features. The reorder is not just up and down one, but specifies the location to move to
 - Split up the code into frontend and backend logic
   - Code split as requested. Display function left in frontend.
-- Add a unit test
+- Add a unit tests for both front and back ends
+  - Unit tests added as requested using unittest from python
