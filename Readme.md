@@ -46,4 +46,11 @@
 
 ## mikeb.M
 
+- Started with final version of course.C
+- Refactored functions.py into backend.py
+  - Added more backend functions for common processes 
+    - Adding, Updating, Dropping logic
+    - Also moved \n processing into backend functions
+      - Except in gui.py, where special provision made and noted
+
 ## ChatGPT.A
