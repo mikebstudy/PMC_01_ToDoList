@@ -1,5 +1,18 @@
 [
-    "now is the",
-    "time for all",
-    "good men"
+    {
+        "task": "aid of their country",
+        "priority": "high"
+    },
+    {
+        "task": "testing",
+        "priority": "medium"
+    },
+    {
+        "task": "now is the time",
+        "priority": "medium"
+    },
+    {
+        "task": "to come to the",
+        "priority": "low"
+    }
 ]

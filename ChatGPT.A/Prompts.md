@@ -50,3 +50,4 @@
 
 - Create a python program for a todo list. Save/Get list to/from a file. Edit todo list items. Do not use classes.
   - Produced a good program that has function calls to do the work seperated from the UI
+- Add these features - 1) ability to reorder the list, 2) ability to mark tasks with priority: high, medium, low and 3) ability to sort the list by priority

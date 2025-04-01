@@ -54,3 +54,6 @@
       - Except in gui.py, where special provision made and noted
 
 ## ChatGPT.A
+
+- Started with creating prompts in Prompt.md
+- The Fourth try of creating prompts yielded a version to work with
