@@ -4,7 +4,11 @@
         "priority": "high"
     },
     {
-        "task": "testing",
+        "task": "another test",
+        "priority": "high"
+    },
+    {
+        "task": "testing testing",
         "priority": "medium"
     },
     {
