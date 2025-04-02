@@ -56,3 +56,11 @@
   - Code split as requested. Display function left in frontend.
 - Add a unit tests for both front and back ends
   - Unit tests added as requested using unittest from python
+- Add GUI version using FreeSimpleGUI and add unit test
+  - Added GUI using PySimpleGUI and unit test
+    - ChatGPT said FreeSimpleGUI does not exist
+	- Replaced PySimpleGUI with FreeSimpleGUI
+	- Added finalize=True to sg.Window creation
+	- Then it worked
+  - Unit test failed
+- Add Web app version using streamlit and unit test
