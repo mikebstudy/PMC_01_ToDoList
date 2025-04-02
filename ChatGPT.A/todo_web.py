@@ -20,7 +20,7 @@ def main():
         if submitted and new_task:
             backend.add_task(todo_list, new_task, priority)
             st.success("Task added successfully!")
-            st.experimental_rerun()
+            st.rerun()
 
     # Edit a task
     with st.form("edit_task_form"):
@@ -31,7 +31,7 @@ def main():
         if edit_submitted and new_task:
             if backend.edit_task(todo_list, task_number - 1, new_task, new_priority):
                 st.success("Task edited successfully!")
-                st.experimental_rerun()
+                st.rerun()
             else:
                 st.error("Invalid task number.")
 
@@ -43,7 +43,7 @@ def main():
         if remove_submitted:
             if backend.remove_task(todo_list, remove_task_number - 1):
                 st.success("Task removed successfully!")
-                st.experimental_rerun()
+                st.rerun()
             else:
                 st.error("Invalid task number.")
 
@@ -55,7 +55,7 @@ def main():
         if reorder_submitted:
             if backend.reorder_task(todo_list, old_position - 1, new_position - 1):
                 st.success("Task reordered successfully!")
-                st.experimental_rerun()
+                st.rerun()
             else:
                 st.error("Invalid positions.")
 
@@ -63,7 +63,7 @@ def main():
     if st.button("Sort by Priority"):
         backend.sort_by_priority(todo_list)
         st.success("Tasks sorted by priority.")
-        st.experimental_rerun()
+        st.rerun()
 
 
 if __name__ == "__main__":

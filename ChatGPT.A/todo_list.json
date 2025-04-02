@@ -1,1 +1,6 @@
-[]
+[
+    {
+        "task": "what am I doing",
+        "priority": "high"
+    }
+]

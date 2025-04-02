@@ -68,3 +68,7 @@
 	- Web app version does not work
 	  - Gives error of streamlit has no attribute experimental_rerun and asks if experimental_user was meant
 	- Unit tests also failed with same error as Web app
+- Replace experiment_rerun with rerun
+  - Web app still does not work correctly
+  - It seems like and older version of streamlit was used for ChatGPT coding.
+  
