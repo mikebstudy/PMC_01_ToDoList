@@ -64,3 +64,7 @@
 	- Then it worked
   - Unit test failed
 - Add Web app version using streamlit and unit test
+  - Added Web app version and unit test
+	- Web app version does not work
+	  - Gives error of streamlit has no attribute experimental_rerun and asks if experimental_user was meant
+	- Unit tests also failed with same error as Web app
