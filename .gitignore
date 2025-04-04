@@ -3,3 +3,8 @@
 /.vscode/
 setup.sh
 Revision+Presentation.pdf
+/__pycache__/
+/course.C/__pycache__/
+/mikeb.M/__pycache__/
+/ChatGPT.A/__pycache__/
+ChatGPT.A/Prompts.md.bak
