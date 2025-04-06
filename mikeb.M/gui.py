@@ -14,7 +14,7 @@ clock = FSG.Text('', key="clock")
 label = FSG.Text("Type in a todo")
 input_box = FSG.InputText(tooltip="Enter todo", key="todo")
 add_button = FSG.Button("Add")
-list_box = FSG.Listbox(values=be.get_todos(), key="todos",
+list_box = FSG.Listbox(values=be.load_todos(), key="todos",
                        enable_events=True, size=(45, 10))
 edit_button = FSG.Button("Edit")
 done_button = FSG.Button("Done")
@@ -44,7 +44,7 @@ while True:
             try:
                 todo_to_edit = values['todos'][0]
                 new_todo = values["todo"]
-                todos = be.get_todos()
+                todos = be.load_todos()
                 index = todos.index(todo_to_edit)
                 todos = be.update_todo(index,new_todo)
                 window['todos'].update(values=todos)
@@ -54,7 +54,7 @@ while True:
         case "Done":
             try:
                 todo_to_complete = values['todos'][0]
-                todos = be.get_todos()
+                todos = be.load_todos()
                 index = todos.index(todo_to_complete)
                 todos = be.drop_todo(index)
                 window['todos'].update(values=todos)

@@ -1,7 +1,7 @@
 import streamlit as st
 import backend as be
 
-todos = be.get_todos()
+todos = be.load_todos()
 
 def add_todo2():
     new_todo = st.session_state["new_todo"] ## + "\n"

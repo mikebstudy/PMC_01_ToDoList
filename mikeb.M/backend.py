@@ -1,6 +1,6 @@
 TODO_FILE = 'todos.txt'
 
-def get_todos(filepath=TODO_FILE):
+def load_todos(filepath=TODO_FILE):
     """
     Read a text file and return the list of to-do items.
     :param filepath: text file where to-do list is stored
@@ -26,7 +26,7 @@ def add_todo(new_todo):
     :param new_todo: to-do item to add
     :return: to-do items list
     """
-    todos = get_todos()
+    todos = load_todos()
     todos.append(new_todo + "\n")
     save_todos(todos)
     return todos
@@ -39,7 +39,7 @@ def update_todo(index, new_todo):
     :param new_todo: to-do to put into the to-do item list
     :return: updated to-do item list
     """
-    todos = get_todos()
+    todos = load_todos()
     # print(f"Replacing: {todos[number]}", end="")
     todos[index] = new_todo + "\n"
     save_todos(todos)
@@ -51,7 +51,7 @@ def drop_todo(index):
     :param index: index into the to-do list
     :return: to-do item list
     """
-    todos = get_todos()
+    todos = load_todos()
     del todos[index]
     save_todos(todos)
     return todos
@@ -59,4 +59,4 @@ def drop_todo(index):
 
 if __name__ == "__main__":
     print("Hello from backend.py")
-    print(get_todos())
+    print(load_todos())
