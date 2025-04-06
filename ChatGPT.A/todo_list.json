@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "task": "another test agina",
+        "priority": "high"
+    },
+    {
+        "task": "testing",
+        "priority": "medium"
+    },
+    {
+        "task": "another test",
+        "priority": "medium"
+    }
+]
