@@ -30,7 +30,8 @@
     - Adding, Updating, Dropping logic
     - Also moved \n processing into backend functions
       - Except in gui.py, where special provision made and noted
-
+- Refactored to store data in a json file
+  - Involved refactor of code to use todo data as a list of dictionaries
 
 ## ChatGPT.A
 

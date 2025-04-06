@@ -1,4 +1,5 @@
-TODO_FILE = 'todos.txt'
+import json
+TODO_FILE = 'todos.json'
 
 def load_todos(filepath=TODO_FILE):
     """
@@ -7,7 +8,7 @@ def load_todos(filepath=TODO_FILE):
     :return: to-do list
     """
     with open(filepath, "r") as file:
-        todos = file.readlines()
+        todos = json.load(file)
         return todos
 
 def save_todos(todos, filepath=TODO_FILE):
@@ -18,7 +19,7 @@ def save_todos(todos, filepath=TODO_FILE):
     :return: None
     """
     with open(filepath, "w") as file:
-        file.writelines(todos)
+        json.dump(todos,file,indent=2)
 
 def add_todo(new_todo):
     """
@@ -27,7 +28,7 @@ def add_todo(new_todo):
     :return: to-do items list
     """
     todos = load_todos()
-    todos.append(new_todo + "\n")
+    todos.append({'todo': new_todo})
     save_todos(todos)
     return todos
 
@@ -41,7 +42,7 @@ def update_todo(index, new_todo):
     """
     todos = load_todos()
     # print(f"Replacing: {todos[number]}", end="")
-    todos[index] = new_todo + "\n"
+    todos[index] = {'todo': new_todo}
     save_todos(todos)
     return todos
 

@@ -14,7 +14,8 @@ clock = FSG.Text('', key="clock")
 label = FSG.Text("Type in a todo")
 input_box = FSG.InputText(tooltip="Enter todo", key="todo")
 add_button = FSG.Button("Add")
-list_box = FSG.Listbox(values=be.load_todos(), key="todos",
+todosList=[task['todo'] for task in be.load_todos()]
+list_box = FSG.Listbox(values=todosList, key="todos",
                        enable_events=True, size=(45, 10))
 edit_button = FSG.Button("Edit")
 done_button = FSG.Button("Done")
@@ -30,6 +31,9 @@ window = FSG.Window("ToDo List",
                         [exit_button]],
                     font=("Helvetica",20))
 
+def format_window_todos(todos):
+    return [task['todo'] for task in todos]
+
 while True:
     event, values = window.read(timeout=200)
     window["clock"].update(value=time.strftime("%b %d, %Y %H:%M:%S"))
@@ -37,7 +41,7 @@ while True:
         case "Add":
             new_todo = values["todo"]
             todos = be.add_todo(new_todo)
-            window['todos'].update(values=todos)
+            window['todos'].update(values=format_window_todos(todos))
             window['todo'].update("")
 
         case "Edit":
@@ -45,9 +49,9 @@ while True:
                 todo_to_edit = values['todos'][0]
                 new_todo = values["todo"]
                 todos = be.load_todos()
-                index = todos.index(todo_to_edit)
+                index = todos.index({"todo":todo_to_edit})
                 todos = be.update_todo(index,new_todo)
-                window['todos'].update(values=todos)
+                window['todos'].update(values=format_window_todos(todos))
             except IndexError:
                 FSG.popup("Please select an item first.", font=("helvetica", 20))
 
@@ -55,20 +59,15 @@ while True:
             try:
                 todo_to_complete = values['todos'][0]
                 todos = be.load_todos()
-                index = todos.index(todo_to_complete)
+                index = todos.index({"todo":todo_to_complete})
                 todos = be.drop_todo(index)
-                window['todos'].update(values=todos)
+                window['todos'].update(values=format_window_todos(todos))
                 window['todo'].update(value='')
             except IndexError:
                 FSG.popup("Please select an item first.", font=("Helvetica", 20))
 
         case "todos":
-            # NOTE: The \n has to be stripped for the edit logic to work.
-            #       Otherwise, extra \n get added unexpectedly and new blank
-            #       lines get created. This is a dependency on the underlying
-            #       data structure, which should not exist. Just leaving
-            #       it alone for now 3/31/2025 mikebstudy.
-            window['todo'].update(value=values["todos"][0].strip('\n'))
+            window['todo'].update(value=values["todos"][0])
 
         case "Exit":
             print("Window closed")

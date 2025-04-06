@@ -3,7 +3,7 @@ import time
 
 def show_todos(todos):
     for index, todo in enumerate(todos):
-        print(f"{index + 1}: {todo.strip("\n")}")
+        print(f"{index + 1}: {todo['todo']}")
 
 
 
@@ -65,7 +65,7 @@ while True:
             print("Number not in todo list")
 
     elif user_action.startswith("clear"):
-        be.save_todos("")
+        be.save_todos([])
 
     elif user_action == "exit":
         break
