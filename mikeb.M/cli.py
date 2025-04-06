@@ -5,6 +5,8 @@ def show_todos(todos):
     for index, todo in enumerate(todos):
         print(f"{index + 1}: {todo['todo']}")
 
+
+
 now = time.strftime("%b %d %Y %H:%M:%S")
 print ("It is", now)
 
@@ -65,21 +67,34 @@ while True:
     elif user_action.startswith("drop"):
 
         try:
+
             number = int(user_action[5:])
+
             # print(number)
+
             number -= 1
+
             todos = be.load_todos()
+
             if number < 0 or number >= len(todos):
                 raise IndexError()
+
             todos = be.drop_todo(number)
 
+
         except ValueError:
+
             # print(ValueError.args)
+
             print("Invalid input")
 
+
         except IndexError as error:
+
             # print(IndexError.args)
+
             # print(error)
+
             print("Number not in todo list")
 
     elif user_action.startswith("clear"):
