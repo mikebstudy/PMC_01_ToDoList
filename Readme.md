@@ -40,6 +40,7 @@
     - This approach was used because I don't know enough about how to code with streamlit.
   - web.py no longer works and is abandoned rather than overwritten
   - Also all three versions, cli.py, gui.py and web2.py have a 'done' added with the 'drop' functionality 
+- Add __name__ == "__main__" approach to facilitate unit testing of UIs 
 
 ## ChatGPT.A
 

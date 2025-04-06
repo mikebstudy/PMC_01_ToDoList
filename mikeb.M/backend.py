@@ -1,5 +1,7 @@
 import json
+
 TODO_FILE = 'todos.json'
+PRIORITY_ORDER = {"top": 1, "urgent": 2, "high": 3, "medium": 4, "low": 5, "background": 6, "deferred": 7}
 
 def load_todos(filepath=TODO_FILE):
     """
@@ -18,41 +20,33 @@ def save_todos(todos, filepath=TODO_FILE):
     :param filepath: text file where to-do list is stored
     :return: None
     """
-    with open(filepath, "w") as file:
-        json.dump(todos,file,indent=2)
+    try:
+        with open(filepath, "w") as file:
+            json.dump(todos,file,indent=2)
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
 
-def add_todo(new_todo):
+def add_todo(todos,new_todo):
     """
     Add (append) to-do to to-do items list
     :param new_todo: to-do item to add
     :return: to-do items list
     """
-    todos = load_todos()
     todos.append({'todo': new_todo})
     save_todos(todos)
     return todos
 
-def update_todo(index, new_todo):
-    """
-    Update to-do list with the new to-do at the index in
-    the to-do item list
-    :param index: index of location to update in the to-do item list
-    :param new_todo: to-do to put into the to-do item list
-    :return: updated to-do item list
-    """
-    todos = load_todos()
+def update_todo(todos, index, new_todo):
+    """ Update to-do list with the new to-do at the index in
+    the to-do item list """
     # print(f"Replacing: {todos[number]}", end="")
     todos[index] = {'todo': new_todo}
     save_todos(todos)
     return todos
 
-def drop_todo(index):
-    """
-    Drop to_do at the index in the to-do item list
-    :param index: index into the to-do list
-    :return: to-do item list
-    """
-    todos = load_todos()
+
+def drop_todo(todos, index):
+    """ Drop to_do at the index in the to-do item list """
     del todos[index]
     save_todos(todos)
     return todos

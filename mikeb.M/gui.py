@@ -35,59 +35,60 @@ window = FSG.Window("ToDo List",
 def format_window_todos(todos):
     return [task['todo'] for task in todos]
 
-while True:
-    event, values = window.read(timeout=200)
-    window["clock"].update(value=time.strftime("%b %d, %Y %H:%M:%S"))
-    match event:
-        case "Add":
-            new_todo = values["todo"]
-            todos = be.add_todo(new_todo)
-            window['todos'].update(values=format_window_todos(todos))
-            window['todo'].update("")
-
-        case "Edit":
-            try:
-                todo_to_edit = values['todos'][0]
+def main():
+    while True:
+        todos = be.load_todos()
+        event, values = window.read(timeout=200)
+        window["clock"].update(value=time.strftime("%b %d, %Y %H:%M:%S"))
+        match event:
+            case "Add":
                 new_todo = values["todo"]
-                todos = be.load_todos()
-                index = todos.index({"todo":todo_to_edit})
-                todos = be.update_todo(index,new_todo)
+                todos = be.add_todo(todos,new_todo)
                 window['todos'].update(values=format_window_todos(todos))
-            except IndexError:
-                FSG.popup("Please select an item first.", font=("helvetica", 20))
+                window['todo'].update("")
 
-        case "Drop":
-            try:
-                todo_to_complete = values['todos'][0]
-                todos = be.load_todos()
-                index = todos.index({"todo":todo_to_complete})
-                todos = be.drop_todo(index)
-                window['todos'].update(values=format_window_todos(todos))
-                window['todo'].update(value='')
-            except IndexError:
-                FSG.popup("Please select an item first.", font=("Helvetica", 20))
+            case "Edit":
+                try:
+                    todo_to_edit = values['todos'][0]
+                    new_todo = values["todo"]
+                    index = todos.index({"todo":todo_to_edit})
+                    todos = be.update_todo(todos,index,new_todo)
+                    window['todos'].update(values=format_window_todos(todos))
+                except IndexError:
+                    FSG.popup("Please select an item first.", font=("helvetica", 20))
 
-        case "Done":
-            try:
-                todo_to_complete = values['todos'][0]
-                todos = be.load_todos()
-                index = todos.index({"todo":todo_to_complete})
-                todos = be.drop_todo(index)
-                window['todos'].update(values=format_window_todos(todos))
-                window['todo'].update(value='')
-            except IndexError:
-                FSG.popup("Please select an item first.", font=("Helvetica", 20))
+            case "Drop":
+                try:
+                    todo_to_complete = values['todos'][0]
+                    index = todos.index({"todo":todo_to_complete})
+                    todos = be.drop_todo(todos,index)
+                    window['todos'].update(values=format_window_todos(todos))
+                    window['todo'].update(value='')
+                except IndexError:
+                    FSG.popup("Please select an item first.", font=("Helvetica", 20))
 
-        case "todos":
-            window['todo'].update(value=values["todos"][0])
+            case "Done":
+                try:
+                    todo_to_complete = values['todos'][0]
+                    index = todos.index({"todo":todo_to_complete})
+                    todos = be.drop_todo(todos,index)
+                    window['todos'].update(values=format_window_todos(todos))
+                    window['todo'].update(value='')
+                except IndexError:
+                    FSG.popup("Please select an item first.", font=("Helvetica", 20))
 
-        case "Exit":
-            print("Window closed")
-            break
+            case "todos":
+                window['todo'].update(value=values["todos"][0])
 
-        case FSG.WIN_CLOSED:
-            print("WINDOW closed")
-            break
+            case "Exit":
+                print("Window closed")
+                break
 
-window.close()
+            case FSG.WIN_CLOSED:
+                print("WINDOW closed")
+                break
 
+    window.close()
+
+if __name__ == "__main__":
+    main()
