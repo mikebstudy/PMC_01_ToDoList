@@ -41,6 +41,8 @@
   - web.py no longer works and is abandoned rather than overwritten
   - Also all three versions, cli.py, gui.py and web2.py have a 'done' added with the 'drop' functionality 
 - Add __name__ == "__main__" approach to facilitate unit testing of UIs 
+- Add 'priority' to cli.py
+  - Priority: Top, Urgent, High, Medium, Low, Background, Deferred.
 
 ## ChatGPT.A
 

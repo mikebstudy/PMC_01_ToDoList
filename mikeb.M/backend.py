@@ -26,21 +26,23 @@ def save_todos(todos, filepath=TODO_FILE):
     except (FileNotFoundError, json.JSONDecodeError):
         return []
 
-def add_todo(todos,new_todo):
+def add_todo(todos,new_todo, priority):
     """
     Add (append) to-do to to-do items list
     :param new_todo: to-do item to add
     :return: to-do items list
     """
-    todos.append({'todo': new_todo})
+    todos.append({'todo': new_todo, 'priority': priority})
     save_todos(todos)
     return todos
 
-def update_todo(todos, index, new_todo):
+
+def update_todo(todos, index, new_todo, priority):
     """ Update to-do list with the new to-do at the index in
     the to-do item list """
     # print(f"Replacing: {todos[number]}", end="")
-    todos[index] = {'todo': new_todo}
+    print(f"update_todo index: {index}")
+    todos[index] = {'todo': new_todo, 'priority': priority}
     save_todos(todos)
     return todos
 

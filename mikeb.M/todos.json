@@ -1,8 +1,22 @@
 [
   {
-    "todo": "again now 45 years later"
+    "todo": "again now 45 years later",
+    "priority": "medium"
   },
   {
-    "todo": "again now we are going"
+    "todo": "test1233",
+    "priority": "low"
+  },
+  {
+    "todo": "testing more",
+    "priority": "urgent"
+  },
+  {
+    "todo": "what now",
+    "priority": "high"
+  },
+  {
+    "todo": "what am I going to do",
+    "priority": "top"
   }
 ]
