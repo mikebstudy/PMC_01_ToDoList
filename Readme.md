@@ -32,6 +32,14 @@
       - Except in gui.py, where special provision made and noted
 - Refactored to store data in a json file
   - Involved refactor of code to use todo data as a list of dictionaries
+- Add remove command to delete a todo item
+- Replace web.py with web2.py. It works more like gui.py
+  - ChatGPT was used to create this new version. 
+    - Took a couple of hours. Kept running into bugs. 
+    - Works basically, but still has some bugs
+    - This approach was used because I don't know enough about how to code with streamlit.
+  - web.py no longer works and is abandoned rather than overwritten
+  - Also all three versions, cli.py, gui.py and web2.py have a 'done' added with the 'drop' functionality 
 
 ## ChatGPT.A
 

@@ -11,7 +11,7 @@ now = time.strftime("%b %d %Y %H:%M:%S")
 print ("It is", now)
 
 while True:
-    user_action = input("Type add, show, edit, done, clear or exit: ")
+    user_action = input("Type add, show, edit, drop, done, clear or exit: ")
     user_action = user_action.strip()
 
     if user_action.startswith("add"):
@@ -62,6 +62,39 @@ while True:
         except IndexError as error:
             # print(IndexError.args)
             # print(error)
+            print("Number not in todo list")
+
+    elif user_action.startswith("drop"):
+
+        try:
+
+            number = int(user_action[5:])
+
+            # print(number)
+
+            number -= 1
+
+            todos = be.load_todos()
+
+            if number < 0 or number >= len(todos):
+                raise IndexError()
+
+            todos = be.drop_todo(number)
+
+
+        except ValueError:
+
+            # print(ValueError.args)
+
+            print("Invalid input")
+
+
+        except IndexError as error:
+
+            # print(IndexError.args)
+
+            # print(error)
+
             print("Number not in todo list")
 
     elif user_action.startswith("clear"):
