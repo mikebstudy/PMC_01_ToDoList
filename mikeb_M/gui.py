@@ -14,7 +14,7 @@ clock = FSG.Text('', key="clock")
 label = FSG.Text("Type in a todo")
 input_box = FSG.InputText(tooltip="Enter todo", key="todo")
 add_button = FSG.Button("Add")
-todosList=[task['todo'] for task in be.load_todos()]
+todosList=[f"[{task['priority']}] {task['todo']}" for task in be.load_todos()]
 list_box = FSG.Listbox(values=todosList, key="todos",
                        enable_events=True, size=(45, 10))
 edit_button = FSG.Button("Edit")
@@ -34,6 +34,7 @@ window = FSG.Window("ToDo List",
 
 def format_window_todos(todos):
     return [task['todo'] for task in todos]
+    # return [f"[{task['priority']}] {task['todo']}" for task in todos]
 
 def main():
     while True:
@@ -43,16 +44,28 @@ def main():
         match event:
             case "Add":
                 new_todo = values["todo"]
-                todos = be.add_todo(todos,new_todo)
+                todos = be.add_todo(todos,new_todo,"medium")
                 window['todos'].update(values=format_window_todos(todos))
                 window['todo'].update("")
 
             case "Edit":
                 try:
                     todo_to_edit = values['todos'][0]
+                    todo_to_edit = todo_to_edit[7:]
+                    print(f"todo_to_edit: {todo_to_edit} ")
                     new_todo = values["todo"]
-                    index = todos.index({"todo":todo_to_edit})
-                    todos = be.update_todo(todos,index,new_todo)
+                    print(f"new_todo: {new_todo}")
+                    todos = be.load_todos()
+                    print(todos)
+                    # index = todos.index({"todo":todo_to_edit})
+                    index_list = [i for i,d in enumerate(todos) if d["todo"] == todo_to_edit]
+                    print(index_list)
+                    index = index_list[0]
+                    priority = "medium"
+                    new_priority = FSG.popup_get_text("New Priority (high, medium, low)",
+                                                     default_text=todos[index]["priority"])
+
+                    todos = be.update_todo(todos,index_list[0],new_todo,new_priority)
                     window['todos'].update(values=format_window_todos(todos))
                 except IndexError:
                     FSG.popup("Please select an item first.", font=("helvetica", 20))
@@ -60,8 +73,10 @@ def main():
             case "Drop":
                 try:
                     todo_to_complete = values['todos'][0]
-                    index = todos.index({"todo":todo_to_complete})
-                    todos = be.drop_todo(todos,index)
+                    #index = todos.index({"todo":todo_to_complete})
+                    todos = be.load_todos()
+                    indexList = [i for i,d in enumerate(todos) if d["todo"] == todo_to_complete]
+                    todos = be.drop_todo(todos,indexList[0])
                     window['todos'].update(values=format_window_todos(todos))
                     window['todo'].update(value='')
                 except IndexError:
@@ -70,8 +85,8 @@ def main():
             case "Done":
                 try:
                     todo_to_complete = values['todos'][0]
-                    index = todos.index({"todo":todo_to_complete})
-                    todos = be.drop_todo(todos,index)
+                    indexList = [i for i,d in enumerate(todos) if d["todo"] == todo_to_complete]
+                    todos = be.drop_todo(todos,indexList[0])
                     window['todos'].update(values=format_window_todos(todos))
                     window['todo'].update(value='')
                 except IndexError:

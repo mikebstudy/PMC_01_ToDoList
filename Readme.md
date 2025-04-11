@@ -1,18 +1,18 @@
-# ToDoList project
+# 01.ToDoList project
 - Based on Python Mega Course (by Ardit Sulce)
   - First 20 lessons on building a Todo List app
   - Includes command line, desktop GUI , and web versions
  
 - Three separate implementations 
-  - course.C is from working the lessons
-  - mikeb.M is enhanced implementation based on my own ideas and those of others on the internet
-  - ChatGTP.A is experiments in generating code similiar to course.C and mikeb.M
+  - course_C is from working the lessons
+  - mikeb_M is enhanced implementation based on my own ideas and those of others on the internet
+  - ChatGTP_A is experiments in generating code similiar to course.C and mikeb.M
   - (C,M,A - are the letters that proceed git commit comments and correspond to the respective implementations)
 
 - Github repo: https://github.com/mikebstudy/PMC.01.ToDoList
   - each version is in its own folder 
 
-## course.C
+## course_C
 - Versions from course first 20 lessons
 - Not all lessons were viewed, just enough to get the gist and do the projects
  
@@ -22,9 +22,9 @@
 - Changed complete command to done command
 - Added number check validation to edit and done commands
 
-## mikeb.M
+## mikeb_M
 
-- Started with final version of course.C
+- Started with final version of course_C
 - Refactored functions.py into backend.py
   - Added more backend functions for common processes 
     - Adding, Updating, Dropping logic
@@ -44,7 +44,7 @@
 - Add 'priority' to cli.py
   - Priority: Top, Urgent, High, Medium, Low, Background, Deferred.
 
-## ChatGPT.A
+## ChatGPT_A
 
 - Started with creating prompts in Prompt.md
 - The Fourth try of creating prompts yielded a version to work with

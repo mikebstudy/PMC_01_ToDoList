@@ -1,4 +1,7 @@
-# Course Notes
+# Course Notes 01.TodoList Project
+- Based on Python Mega Course (by Ardit Sulce)
+- First 20 lessons on building a Todo List app
+ 
 
 ### GUI
 - Day 16: 152 Create a Desktop Graphical User Interface (GUI) 
