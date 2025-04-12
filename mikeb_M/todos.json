@@ -4,15 +4,11 @@
     "priority": "medium"
   },
   {
-    "todo": "test1233",
-    "priority": "low"
-  },
-  {
-    "todo": "what now",
-    "priority": "high"
-  },
-  {
     "todo": "what am I going to do",
     "priority": "top"
+  },
+  {
+    "todo": "now is the time",
+    "priority": "low"
   }
 ]

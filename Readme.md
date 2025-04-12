@@ -1,4 +1,4 @@
-# 01.ToDoList project
+# 01.ToDoList Project
 - Based on Python Mega Course (by Ardit Sulce)
   - First 20 lessons on building a Todo List app
   - Includes command line, desktop GUI , and web versions
@@ -40,9 +40,10 @@
     - This approach was used because I don't know enough about how to code with streamlit.
   - web.py no longer works and is abandoned rather than overwritten
   - Also all three versions, cli.py, gui.py and web2.py have a 'done' added with the 'drop' functionality 
-- Add __name__ == "__main__" approach to facilitate unit testing of UIs 
-- Add 'priority' to cli.py
+- [ ] Maybe add __name__ == "__main__" approach to facilitate unit testing of UIs 
+- [ ] Add 'priority' to cli.py. Make others compatible internally with a priority field
   - Priority: Top, Urgent, High, Medium, Low, Background, Deferred.
+- [ ] Test cli.py, gui.py and web2.py to determine what is working
 
 ## ChatGPT_A
 
