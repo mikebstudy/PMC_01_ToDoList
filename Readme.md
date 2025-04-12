@@ -9,8 +9,8 @@
   - ChatGTP_A is experiments in generating code similiar to course.C and mikeb.M
   - (C,M,A - are the letters that proceed git commit comments and correspond to the respective implementations)
 
-- Github repo: https://github.com/mikebstudy/PMC.01.ToDoList
-  - each version is in its own folder 
+- Github repo: https://github.com/mikebstudy-PMC/PMC_01_ToDoList
+  - each implementation is in its own folder 
 
 ## course_C
 - Versions from course first 20 lessons
