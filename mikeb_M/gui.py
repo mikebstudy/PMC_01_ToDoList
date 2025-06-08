@@ -33,8 +33,8 @@ window = FSG.Window("ToDo List",
                     font=("Helvetica",20))
 
 def format_window_todos(todos):
-    return [task['todo'] for task in todos]
-    # return [f"[{task['priority']}] {task['todo']}" for task in todos]
+    # return [task['todo'] for task in todos]
+    return [f"[{task['priority']}] {task['todo']}" for task in todos]
 
 def main():
     while True:
@@ -51,9 +51,11 @@ def main():
             case "Edit":
                 try:
                     todo_to_edit = values['todos'][0]
-                    todo_to_edit = todo_to_edit[7:]
+                    start_todo = todo_to_edit.find("]") + 2
+                    print(f"start_todo: {start_todo}")
+                    todo_to_edit = todo_to_edit[start_todo:]
                     print(f"todo_to_edit: {todo_to_edit} ")
-                    new_todo = values["todo"]
+                    new_todo = values["todo"][start_todo:]
                     print(f"new_todo: {new_todo}")
                     todos = be.load_todos()
                     print(todos)
@@ -64,15 +66,20 @@ def main():
                     priority = "medium"
                     new_priority = FSG.popup_get_text("New Priority (high, medium, low)",
                                                      default_text=todos[index]["priority"])
-
+                    print(new_priority)
                     todos = be.update_todo(todos,index_list[0],new_todo,new_priority)
                     window['todos'].update(values=format_window_todos(todos))
+                    window['todo'].update("")
+
                 except IndexError:
                     FSG.popup("Please select an item first.", font=("helvetica", 20))
 
             case "Drop":
                 try:
                     todo_to_complete = values['todos'][0]
+                    start_todo = todo_to_complete.find("]") + 2
+                    print(f"start_todo: {start_todo}")
+                    todo_to_complete = todo_to_complete[start_todo:]
                     #index = todos.index({"todo":todo_to_complete})
                     todos = be.load_todos()
                     indexList = [i for i,d in enumerate(todos) if d["todo"] == todo_to_complete]
@@ -85,6 +92,8 @@ def main():
             case "Done":
                 try:
                     todo_to_complete = values['todos'][0]
+                    start_todo = todo_to_complete.find("]") + 2
+                    todo_to_complete = todo_to_complete[start_todo:]
                     indexList = [i for i,d in enumerate(todos) if d["todo"] == todo_to_complete]
                     todos = be.drop_todo(todos,indexList[0])
                     window['todos'].update(values=format_window_todos(todos))

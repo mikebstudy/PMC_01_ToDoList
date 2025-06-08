@@ -4,11 +4,23 @@
     "priority": "medium"
   },
   {
-    "todo": "what am I going to do",
-    "priority": "top"
+    "todo": "again now 473 years later",
+    "priority": "low"
   },
   {
-    "todo": "now is the time",
-    "priority": "low"
+    "todo": "again now 443 years later",
+    "priority": "high"
+  },
+  {
+    "todo": "now is the time for another try",
+    "priority": "medium"
+  },
+  {
+    "todo": "[medium] again now 483 years later",
+    "priority": "medium"
+  },
+  {
+    "todo": "now is the",
+    "priority": "bac"
   }
 ]
