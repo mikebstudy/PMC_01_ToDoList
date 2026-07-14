@@ -13,7 +13,7 @@
   - each implementation is in its own folder 
 
 - Notes:
-	- Began about 20250328
+	- Project began about 20250328
 	- Problems with .venv encountered about 20260713. 
 		- Could not run using python -m xxx.py
 		- Decided to rebuild .venv
