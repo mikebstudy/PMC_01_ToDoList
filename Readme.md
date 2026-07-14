@@ -1,6 +1,6 @@
 # 01.ToDoList Project
 - Based on Python Mega Course (by Ardit Sulce)
-  - First 20 lessons on building a Todo List app
+  - First 20 days on building a Todo List app
   - Includes command line, desktop GUI , and web versions
  
 - Three separate implementations 
@@ -12,17 +12,29 @@
 - Github repo: https://github.com/mikebstudy/PMC_01_ToDoList
   - each implementation is in its own folder 
 
-## course_C
-- Versions from course first 20 lessons
+- Notes:
+	- Began about 20250328
+	- Problems with .venv encountered about 20260713. 
+		- Could not run using python -m xxx.py
+		- Decided to rebuild .venv
+      - py -m venv .venv
+      - python -m pip install --upgrade pip
+      - pip install streamlit
+      - pip install FreeSimpleGUI
+  - Remember to run web version in appropriate folder 
+    - streamlit run web.py
+
+## course_C (20250328)
+- Versions from course first 20 days of lessons
+- Many of the lessons were very basic and did not need viewing. I did have some familiarity with Python.
 - Not all lessons were viewed, just enough to get the gist and do the projects
  
 ### Departures from course version
-- Misc coding changes and variable naming changes that did not affect functionality
-- Added clear command
-- Changed complete command to done command
-- Added number check validation to edit and done commands
+- Added 'clear' command
+- Changed 'complete' command to 'done' command
+- Added number check validation to 'edit' and 'done' commands
 
-## mikeb_M
+## mikeb_M (20250406)
 
 - Started with final version of course_C
 - Refactored functions.py into backend.py
@@ -45,7 +57,7 @@
   - Priority: Top, Urgent, High, Medium, Low, Background, Deferred.
 - [ ] Test cli.py, gui.py and web2.py to determine what is working
 
-## ChatGPT_A
+## ChatGPT_A (20250401)
 
 - Started with creating prompts in Prompt.md
 - The Fourth try of creating prompts yielded a version to work with
